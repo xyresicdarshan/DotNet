@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section HeadContent{
+    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/css")
+}
+
+<div ng-app="studentApp">
+    <h2 class="textAR">Index</h2>
+    <div ng-controller="PathwayCtrl as vm">
+        <div class="listPanel">
+            <button class="btnColor">Red Button</button>
+        </div>
+        <div class="textAR">
+            {{vm.firstName}}
+            {{firstName}}
+        </div>
+       
+        <div class="detailPanel">
+            <button class="btnColor" ng-click="vm.getStudent()">Controller method</button>
+            <button class="btnColor" ng-click="getStudent()">Scope Method</button>
+        </div>
+        <button class="btnColor">Out side Button</button>
+        <div ng-repeat="student in vm.studentList">
+            {{student.name}}
+        </div>
+        <div ng-repeat="stu in studentDataList" class="textAR">
+            {{stu.name}}
+        </div>
+
+        <md-datepicker ng-model="vm.myDate" md-placeholder="Enter date"
+                       input-aria-describedby="datepicker-description"
+                       input-aria-labelledby="datepicker-header "></md-datepicker>
+        <p style="display: none" id="datepicker-description">
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/Common")
+@Scripts.Render("~/bundles/Angular")
+@Scripts.Render("~/bundles/Student")
+
+
+
