@@ -30,15 +30,27 @@ module FirstProjectExtension {
             this.rollNo = 123;
             this.$scope.firstName = "abcd";
             this.myDate = new Date();
+
+            $scope.project = {
+                description: 'Nuclear Missile Defense System',
+                rate: 500,
+                special: true
+            };
+
             $scope.getStudent = () => {
                 //get the list of studnet.
                 this.showMessage("Scope method")
             };
 
+
             this.$scope.getStudent();
             this.getStudent();
             this.showError("On load show error");
         }
+
+
+        
+
         $onInit() {
             this.$scope.loading = true;
             this.getStudent();

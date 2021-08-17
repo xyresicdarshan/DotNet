@@ -47,6 +47,11 @@ namespace Aug16
                     "~/Scripts/Ng/Service/StudentDataService.js",
                     "~/Scripts/Ng/Controller/StudentCtrl.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Form").Include(
+                    "~/Scripts/Ng/Service/StudentDataService.js",
+                    "~/Scripts/Ng/Controller/FormCtrl.js"));
+
+
 
         }
     }

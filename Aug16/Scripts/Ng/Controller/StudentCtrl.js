@@ -29,6 +29,11 @@ var FirstProjectExtension;
             _this.rollNo = 123;
             _this.$scope.firstName = "abcd";
             _this.myDate = new Date();
+            $scope.project = {
+                description: 'Nuclear Missile Defense System',
+                rate: 500,
+                special: true
+            };
             $scope.getStudent = function () {
                 //get the list of studnet.
                 _this.showMessage("Scope method");
