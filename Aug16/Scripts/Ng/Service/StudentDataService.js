@@ -8,29 +8,10 @@ var FirstProjectExtension;
             this.httpService = httpService;
             this.qService = qService;
         }
-        StudentDataService.StudentDataServiceFactory = function ($http, $q) {
-            return new StudentDataService($http, $q);
-        };
-        StudentDataService.prototype.getPathwayDetail = function (pathwayId) {
+        StudentDataService.prototype.postSkill = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = Workpulse.Site.GetUrl('PathwaySchedule') + "/detail/" + pathwayId;
-            ajaxApi({
-                url: apiUrl,
-                success: function (response) {
-                    deferred.resolve(response);
-                },
-                error: function (xhr) {
-                    Workpulse.Site.Alert(xhr);
-                    deferred.reject(xhr);
-                }
-            });
-            return deferred.promise;
-        };
-        StudentDataService.prototype.postPathway = function (pathway) {
-            var self = this;
-            var deferred = self.qService.defer();
-            var apiUrl = Workpulse.Site.GetUrl('PathwaySchedule') + "/pathway";
+            var apiUrl = "https://localhost:44397/student/AddInput";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
@@ -45,6 +26,9 @@ var FirstProjectExtension;
                 }
             });
             return deferred.promise;
+        };
+        StudentDataService.StudentDataServiceFactory = function ($http, $q) {
+            return new StudentDataService($http, $q);
         };
         return StudentDataService;
     }());

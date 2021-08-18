@@ -19,53 +19,31 @@ var FirstProjectExtension;
 (function (FirstProjectExtension) {
     var PathwayCtrl = /** @class */ (function (_super) {
         __extends(PathwayCtrl, _super);
-        function PathwayCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast, $filter) {
+        function PathwayCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
-            _this.$mdToast = $mdToast;
+            _this.AddInput = function () {
+                _this.dataSvc.postSkill(_this.$scope.project).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.$scope = $scope;
-            _this.firstName = "Abc";
-            _this.lastName = "Xyz";
-            _this.rollNo = 123;
-            _this.$scope.firstName = "abcd";
-            _this.myDate = new Date();
-            $scope.project = {
-                description: 'Nuclear Missile Defense System',
-                rate: 500,
-                special: true
-            };
-            $scope.getStudent = function () {
-                //get the list of studnet.
-                _this.showMessage("Scope method");
-            };
-            _this.$scope.getStudent();
-            _this.getStudent();
-            _this.showError("On load show error");
+            $scope.GetAllData = {};
             return _this;
         }
         PathwayCtrl.prototype.$onInit = function () {
-            this.$scope.loading = true;
-            this.getStudent();
-            this.$scope.getStudent();
         };
         PathwayCtrl.prototype.init = function () {
-        };
-        PathwayCtrl.prototype.getStudent = function () {
-            var _this = this;
-            this.showMessage("Controller method");
-            this.dataSvc.getPathwayDetail(12).then(function (data) {
-                _this.studentList = data;
-                _this.$scope.studentDataList = data;
-            }).catch(function (error) {
-            }).finally(function () {
-            });
         };
         return PathwayCtrl;
     }(wp.angularBase.BaseCtrl));
     FirstProjectExtension.PathwayCtrl = PathwayCtrl;
-    PathwayCtrl.$inject = ['$scope', 'PathwayDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
-    app.factory('PathwayDataService', ['$http', '$q', FirstProjectExtension.StudentDataService.StudentDataServiceFactory]);
+    app.factory('StudentDataService', ['$http', '$q', FirstProjectExtension.StudentDataService.StudentDataServiceFactory]);
     app.controller('PathwayCtrl', PathwayCtrl);
 })(FirstProjectExtension || (FirstProjectExtension = {}));
 //# sourceMappingURL=StudentCtrl.js.map

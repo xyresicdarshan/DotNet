@@ -137,9 +137,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CRUD.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,10 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+    <Compile Include="Models\Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1056,6 +1050,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Ng\BaseController.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Controller\StudentCtrl.ts" />
+    <TypeScriptCompile Include="Scripts\Ng\Model\StudentModel.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Service\StudentDataService.ts" />
     <TypeScriptCompile Include="Scripts\Ng\Site.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

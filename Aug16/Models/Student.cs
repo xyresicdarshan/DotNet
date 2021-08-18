@@ -10,13 +10,19 @@
 namespace Aug16.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class Student
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public string ClientId { get; set; }
+        public string ClientName { get; set; }
+        public string Descripion { get; set; }
+        public string ProjectType { get; set; }
+        public string Email { get; set; }
+        public string HourlyRate { get; set; }
+        public string iAccept { get; set; }
+        public string enable { get; set; }
+        public int Id { get; internal set; }
     }
+
 }

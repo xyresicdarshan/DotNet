@@ -7,6 +7,8 @@ namespace Aug16.ViewModel
 {
     public class FormViewModel
     {
+        internal int id;
+
         public string ClientId { get; set; }
         public string ClientName { get; set; }
         public string Descripion { get; set; }
@@ -17,4 +19,5 @@ namespace Aug16.ViewModel
         public string enable { get; set; }
         public object Id { get; internal set; }
     }
+
 }

@@ -5,77 +5,67 @@ module FirstProjectExtension {
     export interface IPathwayScope extends ng.IScope {
         loading: boolean;
         loadingTask: boolean;
-        firstName: string;
-        getStudent(): void;
-        studentDataList: any;
-    }
 
-   
+        ClientId: string;
+        ClientName: string;
+        Descripion: string;
+        ProjectType: string;
+        Email: string;
+        HourlyRate: string;
+        iAccept: string;
+        enable: string;
+        Id: object;
+
+        project: IStudentModel;
+
+    }
     export class PathwayCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
+
+
+        ClientId: string;
+        ClientName: string;
+        Descripion: string;
+        ProjectType: string;
+        Email: string;
+        HourlyRate: string;
+        iAccept: string;
+        enable: string;
+        Id: object;
+
+     
+
         $scope: FirstProjectExtension.IPathwayScope;
         private $mdDialog: any;
-        $mdToast: any;
+        constructor($scope: FirstProjectExtension.IPathwayScope, private dataSvc: StudentDataService, $timeout, $mdDialog: any, $mdSelect: any, $mdToast: any) {
 
-        firstName: String;
-        lastName: String;
-        rollNo: Number;
-        myDate: any;
-
-        constructor($scope: FirstProjectExtension.IPathwayScope, private dataSvc: StudentDataService, $timeout, $mdDialog: any, $mdSelect: any, $mdToast: any, $filter: any) {
             super($scope, $mdToast);
-            this.$mdToast = $mdToast;
             this.$scope = $scope;
-            this.firstName = "Abc";
-            this.lastName = "Xyz";
-            this.rollNo = 123;
-            this.$scope.firstName = "abcd";
-            this.myDate = new Date();
+            $scope.GetAllData = {
 
-            $scope.project = {
-                description: 'Nuclear Missile Defense System',
-                rate: 500,
-                special: true
-            };
-
-            $scope.getStudent = () => {
-                //get the list of studnet.
-                this.showMessage("Scope method")
-            };
-
-
-            this.$scope.getStudent();
-            this.getStudent();
-            this.showError("On load show error");
+            }
+           
         }
 
-
-        
-
         $onInit() {
-            this.$scope.loading = true;
-            this.getStudent();
-            this.$scope.getStudent();
         }
 
         private init(): void {
         }
-        studentList: any;
-        getStudent() {
-            this.showMessage("Controller method");
-            this.dataSvc.getPathwayDetail(12).then((data) => {
-                this.studentList = data;
-                this.$scope.studentDataList = data;
-            }).catch((error) => {
 
+        AddInput = () => {
+            this.dataSvc.postSkill(this.$scope.project).then((data) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
             }).finally(() => {
+
             })
         }
 
     }
-
-    PathwayCtrl.$inject = ['$scope', 'PathwayDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
-    app.factory('PathwayDataService', ['$http', '$q', StudentDataService.StudentDataServiceFactory]);
+    app.factory('StudentDataService', ['$http', '$q', StudentDataService.StudentDataServiceFactory]);
     app.controller('PathwayCtrl', PathwayCtrl);
 }
