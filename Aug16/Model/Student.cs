@@ -7,22 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aug16.Models
+namespace Aug16.Model
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Student
     {
-        public string ClientId { get; set; }
+        public int ClientId { get; set; }
         public string ClientName { get; set; }
         public string Descripion { get; set; }
         public string ProjectType { get; set; }
         public string Email { get; set; }
-        public string HourlyRate { get; set; }
-        public string iAccept { get; set; }
-        public string enable { get; set; }
-        public int Id { get; internal set; }
+        public Nullable<int> HourlyRate { get; set; }
+        public Nullable<bool> iAccept { get; set; }
+        public Nullable<bool> enable { get; set; }
     }
-
 }

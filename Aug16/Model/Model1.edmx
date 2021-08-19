@@ -9,14 +9,14 @@
           <Key>
             <PropertyRef Name="ClientId" />
           </Key>
-          <Property Name="ClientId" Type="varchar" MaxLength="7" Nullable="false" />
-          <Property Name="ClientName" Type="varchar" MaxLength="50" />
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="20" />
           <Property Name="Descripion" Type="varchar" MaxLength="30" />
-          <Property Name="ProjectType" Type="varchar" MaxLength="20" />
-          <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="HourlyRate" Type="varchar" MaxLength="5" />
-          <Property Name="iAccept" Type="varchar" MaxLength="5" />
-          <Property Name="enable" Type="varchar" MaxLength="5" />
+          <Property Name="ProjectType" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+          <Property Name="HourlyRate" Type="int" />
+          <Property Name="iAccept" Type="bit" />
+          <Property Name="enable" Type="bit" />
         </EntityType>
         <EntityContainer Name="FormCRUDModelStoreContainer">
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
@@ -30,16 +30,16 @@
           <Key>
             <PropertyRef Name="ClientId" />
           </Key>
-          <Property Name="ClientId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Descripion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="ProjectType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HourlyRate" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="iAccept" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="enable" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HourlyRate" Type="Int32" />
+          <Property Name="iAccept" Type="Boolean" />
+          <Property Name="enable" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="FormCRUDEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FormCRUDEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Students" EntityType="Self.Student" />
         </EntityContainer>
       </Schema>
@@ -47,7 +47,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FormCRUDModelStoreContainer" CdmEntityContainer="FormCRUDEntities1">
+        <EntityContainerMapping StorageEntityContainer="FormCRUDModelStoreContainer" CdmEntityContainer="FormCRUDEntities3">
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="FormCRUDModel.Student">
               <MappingFragment StoreEntitySet="Student">

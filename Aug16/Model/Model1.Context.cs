@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aug16.Models
+namespace Aug16.Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FormCRUDEntities1 : DbContext
+    public partial class FormCRUDEntities3 : DbContext
     {
-        public FormCRUDEntities1()
-            : base("name=FormCRUDEntities1")
+        public FormCRUDEntities3()
+            : base("name=FormCRUDEntities3")
         {
         }
     

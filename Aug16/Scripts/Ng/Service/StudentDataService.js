@@ -11,12 +11,30 @@ var FirstProjectExtension;
         StudentDataService.prototype.postSkill = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44397/student/AddInput";
+            var apiUrl = "https://localhost:44350/student/AddInput";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
                 type: 'POST',
                 contentType: 'application/json',
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.getPathwayDetail = function (pathwayId) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44350/student/GetCRUDSList";
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
                 success: function (response) {
                     deferred.resolve(response);
                 },

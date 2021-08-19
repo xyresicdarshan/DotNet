@@ -9,15 +9,14 @@ namespace Aug16.ViewModel
     {
         internal int id;
 
-        public string ClientId { get; set; }
+        public int ClientId { get; set; }
         public string ClientName { get; set; }
         public string Descripion { get; set; }
         public string ProjectType { get; set; }
         public string Email { get; set; }
-        public string HourlyRate { get; set; }
-        public string iAccept { get; set; }
-        public string enable { get; set; }
-        public object Id { get; internal set; }
+        public int HourlyRate { get; set; }
+        public bool iAccept { get; set; }
+        public bool enable { get; set; }
     }
 
 }

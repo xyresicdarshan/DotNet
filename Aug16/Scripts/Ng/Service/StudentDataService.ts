@@ -15,12 +15,31 @@ module FirstProjectExtension {
         postSkill(pathway: IStudentModel): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44397/student/AddInput";
+            var apiUrl = "https://localhost:44350/student/AddInput";
             ajaxApi({
                 url: apiUrl,
                 data: JSON.stringify(pathway),
                 type: 'POST',
                 contentType: 'application/json',
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
+
+        getPathwayDetail(pathwayId: number): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44350/student/GetCRUDSList";
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
                 success: (response: IStudentModel) => {
                     deferred.resolve(response);
                 },

@@ -5,15 +5,14 @@
     export interface IStudentModel {
       
 
-        ClientId: string;
+        ClientId: number;
         ClientName: string;
         Descripion: string;
         ProjectType: string;
         Email: string;
         HourlyRate: string;
-        iAccept: string;
-        enable: string;
-        Id: object;
+        iAccept: boolean;
+        enable: boolean;
     }
 
 

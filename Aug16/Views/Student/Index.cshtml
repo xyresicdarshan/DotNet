@@ -14,8 +14,8 @@
             <form name="projectForm">
                 <md-input-container class="md-block textAR">
                     <label>Description</label>
-                    <input md-maxlength="30" required md-no-asterisk name="Descripion" ng-model="project.description">
-                    <div ng-messages="projectForm.description.$error">
+                    <input md-maxlength="30" required md-no-asterisk name="Descripion" ng-model="project.Descripion">
+                    <div ng-messages="projectForm.Descripion.$error">
                         <div ng-message="required">This is required.</div>
                         <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
                     </div>
@@ -24,19 +24,19 @@
                 <div layout="row">
                     <md-input-container flex="50" class="textAR">
                         <label>Client Name</label>
-                        <input required name="ClientName" ng-model="project.clientName">
-                        <div ng-messages="projectForm.clientName.$error">
+                        <input required name="ClientName" ng-model="project.ClientName">
+                        <div ng-messages="projectForm.ClientName.$error">
                             <div ng-message="required">This is required.</div>
                         </div>
                     </md-input-container>
 
                     <md-input-container flex="50" class="textAR">
                         <label>Project Type</label>
-                        <md-select name="ProjectType" ng-model="project.type" required>
+                        <md-select name="ProjectType" ng-model="project.ProjectType" required>
                             <md-option value="app">Application</md-option>
                             <md-option value="web">Website</md-option>
                         </md-select>
-                        <div ng-messages="projectForm.type.$error">
+                        <div ng-messages="projectForm.ProjectType.$error">
                             <div ng-message="required">This is required.</div>
                         </div>
                     </md-input-container>
@@ -44,10 +44,10 @@
 
                 <md-input-container class="md-block textAR">
                     <label>Client Email</label>
-                    <input required type="Email" name="clientEmail" ng-model="project.clientEmail"
+                    <input required type="Email" name="Email" ng-model="project.Email"
                            minlength="10" maxlength="100" />
 
-                    <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                    <div ng-messages="projectForm.Email.$error" role="alert">
                         <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                             Your email must be between 10 and 100 characters long and look like an e-mail address.
                         </div>
@@ -56,10 +56,10 @@
 
                 <md-input-container class="md-block textAR">
                     <label>Hourly Rate (USD)</label>
-                    <input required type="number" step="any" name="HourlyRate" ng-model="project.rate" min="800"
+                    <input required type="number" step="any" name="HourlyRate" ng-model="project.HourlyRate" min="800"
                            max="4999" ng-pattern="/^1234$/" />
 
-                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                    <div ng-messages="projectForm.HourlyRate.$error" multiple md-auto-hide="false">
                         <div ng-message="required">
                             You've got to charge something! You can't just <b>give away</b> a Missile Defense
                             System.
@@ -82,10 +82,10 @@
                 </md-input-container>
 
                 <md-input-container class="md-block textAR">
-                    <md-checkbox name="iAccept" ng-model="project.tos" required>
+                    <md-checkbox name="iAccept" ng-model="project.iAccept" required>
                         I accept the terms of service.
                     </md-checkbox>
-                    <div ng-messages="projectForm.tos.$error" multiple md-auto-hide="false">
+                    <div ng-messages="projectForm.iAccept.$error" multiple md-auto-hide="false">
                         <div ng-message="required">
                             You must accept the terms of service before you can proceed.
                         </div>
@@ -93,17 +93,18 @@
                 </md-input-container>
 
                 <md-input-container class="md-block textAR">
-                    <md-switch class="md-primary" name="enable" ng-model="project.special" required>
+                    <md-switch class="md-primary" name="enable" ng-model="project.enable" required>
                         Enable special options.
                     </md-switch>
-                    <div ng-messages="projectForm.special.$error" multiple>
+                    <div ng-messages="projectForm.enable.$error" multiple>
                         <div ng-message="required" class="textAR">
                             You must enable all special options before you can proceed.
                         </div>
                     </div>
                 </md-input-container>
                 <div>
-                    <md-button type="submit" class="textAR" ng-click="vm.AddInput()">Submit</md-button>
+                    <md-button type="submit" class="textAR" ng-click="vm.AddInput()">ADD</md-button>
+                    <md-button type="button" class="textAR"><a href="~/Student/List"> All Data </a></md-button>
                 </div>
 
                 <p style="font-size:.8em; width: 100%; text-align: center;">
@@ -112,6 +113,32 @@
             </form>
         </md-content>
 
+        <table>
+            <tr>
+                <th>Client Id</th>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Project Type</th>
+                <th>Description</th>
+                <th>Hourly Rate</th>
+                <th>I Accept</th>
+                <th>Enable Specials</th>
+            </tr>
+            <tr>
+                <td>{{vm.Student.ClientId}}</td>
+                <td>{{vm.Student.ClientName}}</td>
+                <td>{{vm.Student.Email}}</td>
+                <td>{{vm.Student.ProjectType}}</td>
+                <td>{{vm.Student. Descripion}}</td>
+                <td>{{vm.Student.HourlyRate}}</td>
+                <td>{{vm.Student.iAccept}}</td>
+                <td>{{vm.Student.enable}}</td>
+                <td><md-button type="submit" class="textAR" ng-click="vm.GetInput()">View</md-button></td>
+                <td><md-button type="submit" class="textAR" ng-click="vm.UpdateInput()">Update</md-button></td>
+                <td><md-button type="submit" class="textAR" ng-click="vm.DeleteInput()">Delete</md-button></td>
+            </tr>
+        </table>
+        <h2 ng-repeat="data in GetCRUDSList()"s></h2>
     </div>
 </div>
 

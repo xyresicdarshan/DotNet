@@ -6,15 +6,15 @@ module FirstProjectExtension {
         loading: boolean;
         loadingTask: boolean;
 
-        ClientId: string;
+        ClientId: number;
         ClientName: string;
         Descripion: string;
         ProjectType: string;
         Email: string;
         HourlyRate: string;
-        iAccept: string;
-        enable: string;
-        Id: object;
+        iAccept: boolean;
+        enable: boolean;
+       
 
         project: IStudentModel;
 
@@ -22,15 +22,15 @@ module FirstProjectExtension {
     export class PathwayCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
 
 
-        ClientId: string;
+        ClientId: number;
         ClientName: string;
         Descripion: string;
         ProjectType: string;
         Email: string;
         HourlyRate: string;
-        iAccept: string;
-        enable: string;
-        Id: object;
+        iAccept: boolean;
+        enable: boolean;
+        
 
      
 
@@ -60,8 +60,8 @@ module FirstProjectExtension {
             }).finally(() => {
 
             })
-        }
 
+        }
     }
     PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 

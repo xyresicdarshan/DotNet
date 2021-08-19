@@ -1,20 +1,18 @@
-﻿using Aug16.Models;
+﻿using Aug16.Model;
 using Aug16.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Aug16.Service
 {
     public class FormService
     {
-        FormCRUDEntities1 db;
+        FormCRUDEntities3 db;
         public FormService()
         {
-            db = new FormCRUDEntities1();
+            db = new FormCRUDEntities3();
         }
-        public FormService(FormCRUDEntities1 _db)
+        public FormService(FormCRUDEntities3 _db)
         {
             db = _db;
         }
@@ -29,14 +27,13 @@ namespace Aug16.Service
         {
             Student input = new Student()
             {
-                ClientId=model.ClientId,
+                ClientId = model.ClientId,
                 ClientName = model.ClientName,
                 Descripion = model.Descripion,
                 Email = model.Email,
                 iAccept = model.iAccept,
                 ProjectType = model.ProjectType,
-                HourlyRate = model.HourlyRate,
-                enable = model.enable
+                HourlyRate = model.HourlyRate
             };
             db.Students.Add(input);
             return db.SaveChanges();
@@ -44,7 +41,7 @@ namespace Aug16.Service
 
         public int UpdateInput(FormViewModel model)
         {
-            var input = db.Students.Where(s => s.Id == model.id).FirstOrDefault();
+            var input = db.Students.Where(s => s.ClientId == model.id).FirstOrDefault();
             if (input!= null)
             {
                 input.ClientId = model.ClientId;
@@ -77,9 +74,9 @@ namespace Aug16.Service
                 ClientName = input.ClientName, 
                 Descripion = input.Descripion,
                 Email =  input.Email,
-                iAccept = input.iAccept,
+                iAccept = input.iAccept.Value,
                 ProjectType = input.ProjectType, 
-                HourlyRate = input.HourlyRate
+                HourlyRate = (int)input.HourlyRate
             };
                 fv.Add(formView);
             }
@@ -89,7 +86,7 @@ namespace Aug16.Service
 
         public FormViewModel GetInput(int id)
         {
-            var input = db.Students.Where(s => s.Id == id).FirstOrDefault();
+            var input = db.Students.Where(s => s.ClientId == id).FirstOrDefault();
             if (input != null)
             {
                 FormViewModel formView = new FormViewModel()
@@ -98,9 +95,9 @@ namespace Aug16.Service
                     ClientName = input.ClientName,
                     Descripion = input.Descripion,
                     Email = input.Email,
-                    iAccept = input.iAccept,
+                    iAccept = input.iAccept.Value,
                     ProjectType = input.ProjectType,
-                    HourlyRate = input.HourlyRate
+                    HourlyRate = (int)input.HourlyRate
                 };
                 return formView;
             }
@@ -112,7 +109,7 @@ namespace Aug16.Service
 
         public int DeleteInput(int id)
         {
-            var input = db.Students.Where(s => s.Id == id).FirstOrDefault();
+            var input = db.Students.Where(s => s.ClientId == id).FirstOrDefault();
             if (input != null)
             {
                 db.Students.Remove(input);

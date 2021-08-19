@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+@section HeadContent{
+    @Styles.Render("~/Content/Student")
+    @Styles.Render("~/Content/css")
+}
+<div ng-app="studentApp">
+    <div ng-controller="PathwayCtrl as vm">
+        <h2 style="align-items:center">All INPUT DATA</h2>
+
+        <table ng-repeat="data in GetCRUDSList()">
+            <tr>
+                <th>Client Id</th>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Project Type</th>
+                <th>Description</th>
+                <th>Hourly Rate</th>
+                <th>Client Id</th>
+                <th>I Accept</th>
+                <th>Enable Specials</th>
+            </tr>
+            <tr>
+                <td>{{vm.Student.ClientId}}</td>
+                <td>{{vm.Student.ClientName}}</td>
+                <td>{{vm.Student.Email}}</td>
+                <td>{{vm.Student.ProjectType}}</td>
+                <td>{{vm.Student. Descripion}}</td>
+                <td>{{vm.Student.HourlyRate}}</td>
+                <td>{{vm.Student.iAccept}}</td>
+                <td>{{vm.Student.enable}}</td>
+                <td><md-button type="submit" class="textAR" ng-click="vm.GetInput()">View</md-button></td>
+                <td><md-button type="submit" class="textAR" ng-click="vm.UpdateInput()">Update</md-button></td>
+                <td><md-button type="submit" class="textAR" ng-click="vm.DeleteInput()">Delete</md-button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/Common")
+@Scripts.Render("~/bundles/Angular")
+@Scripts.Render("~/bundles/Student")
