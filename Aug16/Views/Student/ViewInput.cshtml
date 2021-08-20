@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+
+<div ng-app="studentApp">
+    <div ng-controller="PathwayCtrl as vm">
+        <h1>View Details</h1>
+        <div>
+            <table>
+                <tr>
+                    <th>Client Id</th>
+                    <th>Client Name</th>
+                    <th>Email</th>
+                    <th>Project Type</th>
+                    <th>Description</th>
+                    <th>Hourly Rate</th>
+                    <th>I Accept</th>
+                    <th>Enable Specials</th>
+                </tr>
+                <tr>
+                    <td>{{data.ClientId}}</td>
+                    <td>{{data.ClientName}}</td>
+                    <td>{{data.Email}}</td>
+                    <td>{{data.ProjectType}}</td>
+                    <td>{{data. Descripion}}</td>
+                    <td>{{data.HourlyRate}}</td>
+                    <td>{{data.iAccept}}</td>
+                    <td>{{data.enable}}</td>
+                </tr>
+            </table>
+            <td><md-button type="submit" class="textAR"> <a href="~/Student/List/"> Back </a></md-button></td>
+        </div>
+    </div>
+</div>

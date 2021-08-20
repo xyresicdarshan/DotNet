@@ -1,5 +1,6 @@
 ﻿using Aug16.Model;
 using Aug16.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,7 +39,6 @@ namespace Aug16.Service
             db.Students.Add(input);
             return db.SaveChanges();
         }
-
         public int UpdateInput(FormViewModel model)
         {
             var input = db.Students.Where(s => s.ClientId == model.id).FirstOrDefault();

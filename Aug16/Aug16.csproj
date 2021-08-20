@@ -1033,6 +1033,8 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\List.cshtml" />
+    <Content Include="Views\Student\Update.cshtml" />
+    <Content Include="Views\Student\ViewInput.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

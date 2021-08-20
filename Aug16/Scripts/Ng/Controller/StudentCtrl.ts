@@ -30,6 +30,7 @@ module FirstProjectExtension {
         HourlyRate: string;
         iAccept: boolean;
         enable: boolean;
+
         
 
      
@@ -40,9 +41,10 @@ module FirstProjectExtension {
 
             super($scope, $mdToast);
             this.$scope = $scope;
-            $scope.GetAllData = {
 
-            }
+            this.ClientId = $("#hdnid").val();
+            console.log(this.ClientId);
+            this.GetInput(this.ClientId);
            
         }
 
@@ -62,6 +64,57 @@ module FirstProjectExtension {
             })
 
         }
+
+        studentList: IStudentModel[];
+        GetCRUDList = () => {
+            this.dataSvc.getPathwayDetail(this.$scope.project).then((data) => {
+                var Student: string[] = new Array(100)
+                this.studentList = data;
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+            })
+
+        }
+
+
+        DeleteInput = (id) => {
+            this.dataSvc.DeleteInput(id).then((data) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+            })
+
+        }
+
+        GetInput = (id) => {
+            this.dataSvc.GetInput(id).then((data) => {
+                this.$scope.project = data;
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+            })
+
+        }
+
+
+        UpdateInput = () => {
+            this.dataSvc.UpdateInput(this.$scope.project).then((data) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            }).finally(() => {
+
+            })
+
+        }
+
     }
     PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 

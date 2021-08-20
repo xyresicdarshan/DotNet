@@ -30,8 +30,45 @@ var FirstProjectExtension;
                 }).finally(function () {
                 });
             };
+            _this.GetCRUDList = function () {
+                _this.dataSvc.getPathwayDetail(_this.$scope.project).then(function (data) {
+                    var Student = new Array(100);
+                    _this.studentList = data;
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
+            _this.DeleteInput = function (id) {
+                _this.dataSvc.DeleteInput(id).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
+            _this.GetInput = function (id) {
+                _this.dataSvc.GetInput(id).then(function (data) {
+                    _this.$scope.project = data;
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
+            _this.UpdateInput = function () {
+                _this.dataSvc.UpdateInput(_this.$scope.project).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                }).finally(function () {
+                });
+            };
             _this.$scope = $scope;
-            $scope.GetAllData = {};
+            _this.ClientId = $("#hdnid").val();
+            console.log(_this.ClientId);
+            _this.GetInput(_this.ClientId);
             return _this;
         }
         PathwayCtrl.prototype.$onInit = function () {

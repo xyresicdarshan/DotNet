@@ -28,7 +28,7 @@ var FirstProjectExtension;
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.getPathwayDetail = function (pathwayId) {
+        StudentDataService.prototype.getPathwayDetail = function (pathway) {
             var self = this;
             var deferred = self.qService.defer();
             var apiUrl = "https://localhost:44350/student/GetCRUDSList";
@@ -39,7 +39,64 @@ var FirstProjectExtension;
                     deferred.resolve(response);
                 },
                 error: function (xhr) {
-                    Workpulse.Site.Alert(xhr);
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.DeleteInput = function (id) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44350/student/DeleteInput/" + id;
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.UpdateInput = function (pathway) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44350/student/UpdateInput";
+            ajaxApi({
+                url: apiUrl,
+                data: JSON.stringify(pathway),
+                type: 'POST',
+                contentType: 'application/json',
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.GetInput = function (id) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44350/student/GetInput/" + id;
+            ajaxApi({
+                type: 'GET',
+                url: apiUrl,
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    Workpulse.Site.AlertJS(xhr);
                     deferred.reject(xhr);
                 }
             });
