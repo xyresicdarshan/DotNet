@@ -33,7 +33,7 @@ module FirstProjectExtension {
             return deferred.promise;
         }
 
-        getPathwayDetail(pathway: IStudentModel): ng.IPromise<IStudentModel[]> {
+        getPathwayDetail(Pathway: IStudentModel): ng.IPromise<IStudentModel[]> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel[]>();
             var apiUrl = "https://localhost:44350/student/GetCRUDSList";
@@ -56,7 +56,7 @@ module FirstProjectExtension {
         DeleteInput(id: number): ng.IPromise<IStudentModel> {
             var self = this;
             var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44350/student/DeleteInput/"+id;
+            var apiUrl = "https://localhost:44350/student/DeleteInput/" +id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -72,26 +72,6 @@ module FirstProjectExtension {
             return deferred.promise;
         }
 
-        UpdateInput(pathway: IStudentModel): ng.IPromise<IStudentModel> {
-            var self = this;
-            var deferred = self.qService.defer<IStudentModel>();
-            var apiUrl = "https://localhost:44350/student/UpdateInput"+id;
-            ajaxApi({
-                url: apiUrl,
-                data: JSON.stringify(pathway),
-                type: 'POST',
-                contentType: 'application/json',
-                success: (response: IStudentModel) => {
-                    deferred.resolve(response);
-                },
-                error: (xhr) => {
-                    console.log(xhr)
-                    Workpulse.Site.AlertJS(xhr)
-                    deferred.reject(xhr);
-                }
-            });
-            return deferred.promise;
-        }
 
         GetInput(id: number): ng.IPromise<IStudentModel> {
             var self = this;
@@ -100,6 +80,28 @@ module FirstProjectExtension {
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
+                contentType: 'application/json',
+                success: (response: IStudentModel) => {
+                    deferred.resolve(response);
+                },
+                error: (xhr) => {
+                    console.log(xhr)
+                    //Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        }
+
+        UpdateInput(id: number): ng.IPromise<IStudentModel> {
+            var self = this;
+            var deferred = self.qService.defer<IStudentModel>();
+            var apiUrl = "https://localhost:44350/student/UpdateInput/" +id;
+            ajaxApi({
+                url: apiUrl,
+                //data: JSON.stringify(pathway),
+                type: 'POST',
+                contentType: 'application/json',
                 success: (response: IStudentModel) => {
                     deferred.resolve(response);
                 },

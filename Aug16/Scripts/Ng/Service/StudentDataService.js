@@ -28,7 +28,7 @@ var FirstProjectExtension;
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.getPathwayDetail = function (pathway) {
+        StudentDataService.prototype.getPathwayDetail = function (Pathway) {
             var self = this;
             var deferred = self.qService.defer();
             var apiUrl = "https://localhost:44350/student/GetCRUDSList";
@@ -64,26 +64,6 @@ var FirstProjectExtension;
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.UpdateInput = function (pathway) {
-            var self = this;
-            var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44350/student/UpdateInput";
-            ajaxApi({
-                url: apiUrl,
-                data: JSON.stringify(pathway),
-                type: 'POST',
-                contentType: 'application/json',
-                success: function (response) {
-                    deferred.resolve(response);
-                },
-                error: function (xhr) {
-                    console.log(xhr);
-                    Workpulse.Site.AlertJS(xhr);
-                    deferred.reject(xhr);
-                }
-            });
-            return deferred.promise;
-        };
         StudentDataService.prototype.GetInput = function (id) {
             var self = this;
             var deferred = self.qService.defer();
@@ -91,6 +71,27 @@ var FirstProjectExtension;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
+                contentType: 'application/json',
+                success: function (response) {
+                    deferred.resolve(response);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                    //Workpulse.Site.AlertJS(xhr)
+                    deferred.reject(xhr);
+                }
+            });
+            return deferred.promise;
+        };
+        StudentDataService.prototype.UpdateInput = function (id) {
+            var self = this;
+            var deferred = self.qService.defer();
+            var apiUrl = "https://localhost:44350/student/UpdateInput/" + id;
+            ajaxApi({
+                url: apiUrl,
+                //data: JSON.stringify(pathway),
+                type: 'POST',
+                contentType: 'application/json',
                 success: function (response) {
                     deferred.resolve(response);
                 },

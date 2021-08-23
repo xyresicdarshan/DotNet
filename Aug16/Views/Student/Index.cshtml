@@ -8,7 +8,7 @@
 
 <div ng-app="studentApp">
     <h2 class="textAR">Material Form CRUD </h2>
-    <div ng-controller="PathwayCtrl as vm">
+    <div ng-controller="PathwayCtrl">
         <md-content layout-padding>
             <form name="projectForm">
                 <md-input-container class="md-block textAR">
@@ -102,7 +102,7 @@
                     </div>
                 </md-input-container>
                 <div>
-                    <md-button type="submit" class="textAR" ng-click="vm.AddInput()">ADD</md-button>
+                    <md-button type="submit" class="textAR" ng-click="PathwayCtrl.AddInput()">ADD</md-button>
                     <md-button type="button" class="textAR"> <a href="~/Student/List">Show All DATA </a></md-button>
                 </div>
 

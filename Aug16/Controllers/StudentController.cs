@@ -7,6 +7,8 @@ namespace Aug16.Controllers
     public class StudentController : Controller
     {
         FormService service = new FormService();
+
+
         // GET: Student
         public ActionResult Index()
         {
@@ -16,13 +18,9 @@ namespace Aug16.Controllers
         {
             return View();
         }
-        public ActionResult Update(int id)
+        public ActionResult ViewInput(int id)
         {
             ViewBag.Id = id;
-            return View();
-        }
-        public ActionResult ViewInput()
-        {
             return View();
         }
         public JsonResult AddInput(FormViewModel model)
@@ -42,15 +40,18 @@ namespace Aug16.Controllers
             var result = service.DeleteInput(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult UpdateInput(FormViewModel model)
-        {
-            var result = service.UpdateInput(model);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
 
         public JsonResult GetInput(int id)
         {
+            ViewBag.Id = id;
             var result = service.GetInput(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult  UpdateInput(int id)
+        {
+            ViewBag.Id = id;
+            var result = service.UpdateInput(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }

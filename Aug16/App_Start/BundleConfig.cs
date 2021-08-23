@@ -51,6 +51,21 @@ namespace Aug16
                     "~/Scripts/Ng/Service/StudentDataService.js",
                     "~/Scripts/Ng/Controller/FormCtrl.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Delete").Include(
+                    "~/Scripts/Ng/Service/StudentDataService.js",
+                    "~/Scripts/Ng/Controller/deleteCtrl.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/List").Include(
+                    "~/Scripts/Ng/Service/StudentDataService.js",
+                    "~/Scripts/Ng/Controller/ListCtrl.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Update").Include(
+                    "~/Scripts/Ng/Service/StudentDataService.js",
+                    "~/Scripts/Ng/Controller/UpdateCtrl.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/View").Include(
+                    "~/Scripts/Ng/Service/StudentDataService.js",
+                    "~/Scripts/Ng/Controller/ViewCtrl.js"));
 
 
         }

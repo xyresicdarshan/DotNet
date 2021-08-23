@@ -39,29 +39,8 @@ namespace Aug16.Service
             db.Students.Add(input);
             return db.SaveChanges();
         }
-        public int UpdateInput(FormViewModel model)
-        {
-            var input = db.Students.Where(s => s.ClientId == model.id).FirstOrDefault();
-            if (input!= null)
-            {
-                input.ClientId = model.ClientId;
-                input.ClientName = model.ClientName;
-                input.Descripion = model.Descripion;
-                input.Email = model.Email;
-                input.iAccept = model.iAccept;
-                input.ProjectType = model.ProjectType;
-                input.HourlyRate = model.HourlyRate;
-                input.enable = model.enable;
+        
 
-                db.Entry<Student>(input).State = System.Data.Entity.EntityState.Modified;
-                return db.SaveChanges();
-                    
-            }
-            else
-            {
-                return -1;
-            }
-        }
         public List<FormViewModel> GetCRUDSList()
         {
             var inputs = db.Students.ToList();
@@ -81,6 +60,23 @@ namespace Aug16.Service
                 fv.Add(formView);
             }
             return fv;
+        }
+
+
+      
+
+        public int DeleteInput(int id)
+        {
+            var input = db.Students.Where(s => s.ClientId == id).FirstOrDefault();
+            if (input != null)
+            {
+                db.Students.Remove(input);
+                return db.SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
         }
 
 
@@ -107,18 +103,30 @@ namespace Aug16.Service
             }
         }
 
-        public int DeleteInput(int id)
+
+        public int UpdateInput(int id)
         {
             var input = db.Students.Where(s => s.ClientId == id).FirstOrDefault();
             if (input != null)
             {
-                db.Students.Remove(input);
+                input.ClientId = input.ClientId;
+                input.ClientName = input.ClientName;
+                input.Descripion = input.Descripion;
+                input.Email = input.Email;
+                input.iAccept = input.iAccept;
+                input.ProjectType = input.ProjectType;
+                input.HourlyRate = input.HourlyRate;
+                input.enable = input.enable;
+
+                db.Entry<Student>(input).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
+
             }
             else
             {
-                return 0;
+                return -1;
             }
         }
+
     }
 }

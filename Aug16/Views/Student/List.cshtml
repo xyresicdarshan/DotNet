@@ -6,7 +6,7 @@
     @Styles.Render("~/Content/css")
 }
 <div ng-app="studentApp">
-    <div ng-controller="PathwayCtrl as vm">
+    <div ng-controller="ListCtrl as vm">
 
         <!-- <md-button type="submit" class="textAR" ng-click="vm.GetCRUDList()">Show List</md-button>-->
         <h4 class="textAR">
@@ -35,11 +35,14 @@
                     <td>{{data.HourlyRate}}</td>
                     <td>{{data.iAccept}}</td>
                     <td>{{data.enable}}</td>
-                    <td><md-button type="submit" class="textAR"> <a href="~/Student/ViewInput/ {{data.ClientId}}"> View </a></md-button></td>
-                    <td><md-button type="submit" class="textAR"> <a href="~/Student/Update/{{data.ClientId}}"> Update </a></md-button></td>
+                    <td><md-button class="textAR" ng-click="vm.ViewInput(data.ClientId)"> View </md-button></td>
+                    <td><md-button class="textAR" ng-click="vm.UpdateInput(data.ClientId)"> Update</md-button></td>
+                    <!--<td><a href="~/Student/ViewInput/{{data.ClientId}}" ng-click="vm.GetInput(data.ClientId)">View1</a></td>
+    <td><a href="~/Student/ViewInput/{{data.ClientId}}" ng-click="vm.UpdateInput(data.ClientId)">Update1</a></td>-->
                     <td><md-button type="submit" class="textAR" ng-click="vm.DeleteInput(data.ClientId)">Delete</md-button></td>
                 </tr>
             </table>
+
         </div>
     </div>
     <md-button type="submit" class="textAR"> <a href="~/Student/"> Back </a></md-button>
@@ -47,4 +50,5 @@
 
 @Scripts.Render("~/bundles/Common")
 @Scripts.Render("~/bundles/Angular")
-@Scripts.Render("~/bundles/Student")
+@Scripts.Render("~/bundles/List")
+
