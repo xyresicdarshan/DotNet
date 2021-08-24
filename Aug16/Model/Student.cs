@@ -21,6 +21,6 @@ namespace Aug16.Model
         public string Email { get; set; }
         public Nullable<int> HourlyRate { get; set; }
         public Nullable<bool> iAccept { get; set; }
-        public Nullable<bool> enable { get; set; }
+        public bool enable { get; set; }
     }
 }

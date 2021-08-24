@@ -26,23 +26,20 @@ var FirstProjectExtension;
                 console.log(id);
                 _this.dataSvc.GetInput(id).then(function (data) {
                     console.log(data);
+                    _this.$scope.project = data;
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
                 });
             };
-            _this.UpdateInput = function (id) {
-                console.log(id);
-                _this.ShowInput(id);
-                _this.dataSvc.UpdateInput(id).then(function (data) {
+            _this.UpdateInput = function () {
+                _this.dataSvc.UpdateInput(_this.$scope.project).then(function (data) {
+                    _this.showMessage("Updated Sucesfully");
                     console.log(data);
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
                 });
-            };
-            _this.ShowInput = function (id) {
-                window.location.href = "/Student/ViewInput/" + id;
             };
             _this.$scope = $scope;
             _this.ClientId = $("#hdnid").val();

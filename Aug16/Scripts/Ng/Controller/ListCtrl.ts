@@ -1,4 +1,4 @@
-﻿/// <reference path="../../typings/angularjs/angular.d.ts" />
+﻿ /// <reference path="../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../typings/jQuery/jquery.d.ts" />
 
 module FirstProjectExtension {
@@ -34,14 +34,14 @@ module FirstProjectExtension {
 
 
         $scope: FirstProjectExtension.IPathwayScope;
-        private $mdDialog: any;
+        $mdDialog: any;
         constructor($scope: FirstProjectExtension.IPathwayScope, private dataSvc: StudentDataService, $timeout, $mdDialog: any, $mdSelect: any, $mdToast: any) {
 
             super($scope, $mdToast);
             this.$scope = $scope;
+            this.$mdDialog = $mdDialog;
+            this.GetCRUDList();
 
-            this.ClientId = $("#hdnid").val();
-            this.ViewInput(this.ClientId);
         }
 
         $onInit() {
@@ -65,10 +65,11 @@ module FirstProjectExtension {
         }
 
         ViewInput = (id: number) => {
-            //this.ShowInput(id);
+            this.ShowInput(id);
             console.log(id);
             this.dataSvc.GetInput(id).then((data) => {
                 console.log(data);
+                this.$scope.project = data;
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
@@ -78,20 +79,33 @@ module FirstProjectExtension {
 
 
         DeleteInput = (id) => {
-            this.dataSvc.DeleteInput(id).then((data) => {
-                console.log(data);
-            }).catch((error) => {
-                console.log(error);
-            }).finally(() => {
 
-            })
+            var confirm = this.$mdDialog.confirm()
+                .title('Would you like to delete')
+                .textContent('')
+                .ariaLabel('')
 
+                .targetEvent(null)
+                .ok('Yes')
+                .cancel('Cancel');
+
+            this.$mdDialog.show(confirm).then(()=>{
+                this.dataSvc.DeleteInput(id).then((data) => {
+                    this.showWarning("Deleted Sucessfully");
+                    console.log(data);
+                    this.GetCRUDList();
+                }).catch((error) => {
+                    console.log(error);
+                }).finally(() => {
+
+                })
+            },  ()=> {
+            });
         }
 
 
-        UpdateInput = (id: number) => {
+        UpdateInput = (id) => {
             this.ShowInput(id);
-            console.log(id);
             this.dataSvc.UpdateInput(id).then((data) => {
                 console.log(data);
             }).catch((error) => {
@@ -102,7 +116,7 @@ module FirstProjectExtension {
         }
 
         ShowInput = (id: number) => {
-            window.location.href = "/Student/ViewInput/" +id;
+            window.location.href = "/Student/ViewInput/"+id;
         }
 
     }

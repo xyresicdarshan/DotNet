@@ -17,14 +17,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var FirstProjectExtension;
 (function (FirstProjectExtension) {
-    var PathwayCtrl = /** @class */ (function (_super) {
-        __extends(PathwayCtrl, _super);
-        function PathwayCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
+    var StudentCtrl = /** @class */ (function (_super) {
+        __extends(StudentCtrl, _super);
+        function StudentCtrl($scope, dataSvc, $timeout, $mdDialog, $mdSelect, $mdToast) {
             var _this = _super.call(this, $scope, $mdToast) || this;
             _this.dataSvc = dataSvc;
             _this.AddInput = function () {
                 _this.dataSvc.postSkill(_this.$scope.project).then(function (data) {
                     console.log(data);
+                    _this.showMessage("Added Sucessfully");
+                    _this.$scope.project = null;
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
@@ -33,16 +35,16 @@ var FirstProjectExtension;
             _this.$scope = $scope;
             return _this;
         }
-        PathwayCtrl.prototype.$onInit = function () {
+        StudentCtrl.prototype.$onInit = function () {
         };
-        PathwayCtrl.prototype.init = function () {
+        StudentCtrl.prototype.init = function () {
         };
-        return PathwayCtrl;
+        return StudentCtrl;
     }(wp.angularBase.BaseCtrl));
-    FirstProjectExtension.PathwayCtrl = PathwayCtrl;
-    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    FirstProjectExtension.StudentCtrl = StudentCtrl;
+    StudentCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', FirstProjectExtension.StudentDataService.StudentDataServiceFactory]);
-    app.controller('PathwayCtrl', PathwayCtrl);
+    app.controller('StudentCtrl', StudentCtrl);
 })(FirstProjectExtension || (FirstProjectExtension = {}));
 //# sourceMappingURL=StudentCtrl.js.map

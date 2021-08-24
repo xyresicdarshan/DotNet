@@ -8,17 +8,18 @@ var FirstProjectExtension;
             this.httpService = httpService;
             this.qService = qService;
         }
-        StudentDataService.prototype.postSkill = function (pathway) {
+        StudentDataService.prototype.postSkill = function (student) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44350/student/AddInput";
+            var apiUrl = "https://localhost:44350/studentapi/AddInput";
             ajaxApi({
                 url: apiUrl,
-                data: JSON.stringify(pathway),
+                data: JSON.stringify(student),
                 type: 'POST',
                 contentType: 'application/json',
                 success: function (response) {
                     deferred.resolve(response);
+                    //Workpulse.Site.AlertJS("Added Sucessfully")
                 },
                 error: function (xhr) {
                     console.log(xhr);
@@ -31,7 +32,7 @@ var FirstProjectExtension;
         StudentDataService.prototype.getPathwayDetail = function (Pathway) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44350/student/GetCRUDSList";
+            var apiUrl = "https://localhost:44350/studentapi/GetCRUDSList";
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -49,7 +50,7 @@ var FirstProjectExtension;
         StudentDataService.prototype.DeleteInput = function (id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44350/student/DeleteInput/" + id;
+            var apiUrl = "https://localhost:44350/studentapi/DeleteInput/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
@@ -67,29 +68,29 @@ var FirstProjectExtension;
         StudentDataService.prototype.GetInput = function (id) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44350/student/GetInput/" + id;
+            var apiUrl = "https://localhost:44350/studentapi/GetInput/" + id;
             ajaxApi({
                 type: 'GET',
                 url: apiUrl,
-                contentType: 'application/json',
+                //contentType: 'application/json',
                 success: function (response) {
                     deferred.resolve(response);
                 },
                 error: function (xhr) {
                     console.log(xhr);
-                    //Workpulse.Site.AlertJS(xhr)
+                    Workpulse.Site.AlertJS(xhr);
                     deferred.reject(xhr);
                 }
             });
             return deferred.promise;
         };
-        StudentDataService.prototype.UpdateInput = function (id) {
+        StudentDataService.prototype.UpdateInput = function (student) {
             var self = this;
             var deferred = self.qService.defer();
-            var apiUrl = "https://localhost:44350/student/UpdateInput/" + id;
+            var apiUrl = "https://localhost:44350/studentapi/UpdateInput   ";
             ajaxApi({
                 url: apiUrl,
-                //data: JSON.stringify(pathway),
+                data: JSON.stringify(student),
                 type: 'POST',
                 contentType: 'application/json',
                 success: function (response) {

@@ -12,27 +12,56 @@ body .detailPanel .btnColor {
 
 body .textAR {
   color: blue;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: larger; }
+  text-transform: none;
+  font-size: larger;
+  text-decoration: none; }
 
-.inputdemoErrors .inputErrorsApp {
+body .txthead {
+  color: blue;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 27px;
+  text-decoration: none; }
+
+body a {
+  color: white; }
+
+body a:hover {
+  color: white; }
+
+body .inputdemoErrors .inputErrorsApp {
   min-height: 48px; }
 
-.inputdemoErrors md-input-container > p {
+body .inputdemoErrors md-input-container > p {
   font-size: 0.8em;
   text-align: left;
   width: 100%; }
 
-table, th, td {
+body .table, th, td {
   border: 1px solid grey;
   border-collapse: collapse;
-  padding: 5px; }
+  padding: 50px;
+  margin: auto;
+  align-items: center;
+  text-align: center; }
 
-table tr:nth-child(odd) {
+body th {
+  padding: 3px;
+  margin: auto;
+  align-items: center;
+  text-align: center; }
+
+body td {
+  padding: 10px;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  color: Black; }
+
+body .table tr:nth-child(odd) {
   background-color: #f2f2f2; }
 
-table tr:nth-child(even) {
+body .table tr:nth-child(even) {
   background-color: #ffffff; }
 
-.chkbtn {
+body .chkbtn {
   color: aqua; }

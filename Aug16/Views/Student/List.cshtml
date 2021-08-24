@@ -7,16 +7,10 @@
 }
 <div ng-app="studentApp">
     <div ng-controller="ListCtrl as vm">
-
-        <!-- <md-button type="submit" class="textAR" ng-click="vm.GetCRUDList()">Show List</md-button>-->
-        <h4 class="textAR">
-            Show List
-            <input type="checkbox" ng-model="showHide1" ng-click="vm.GetCRUDList()" class="chkbtn">
-        </h4>
-
-        <div ng-show="showHide1">
+        <div>
+            <h1 class="txthead"> ALL DATA</h1>
             <table>
-                <tr>
+                <tr style="text-align:center">
                     <th>Client Id</th>
                     <th>Client Name</th>
                     <th>Email</th>
@@ -33,19 +27,17 @@
                     <td>{{data.ProjectType}}</td>
                     <td>{{data. Descripion}}</td>
                     <td>{{data.HourlyRate}}</td>
-                    <td>{{data.iAccept}}</td>
-                    <td>{{data.enable}}</td>
-                    <td><md-button class="textAR" ng-click="vm.ViewInput(data.ClientId)"> View </md-button></td>
-                    <td><md-button class="textAR" ng-click="vm.UpdateInput(data.ClientId)"> Update</md-button></td>
-                    <!--<td><a href="~/Student/ViewInput/{{data.ClientId}}" ng-click="vm.GetInput(data.ClientId)">View1</a></td>
-    <td><a href="~/Student/ViewInput/{{data.ClientId}}" ng-click="vm.UpdateInput(data.ClientId)">Update1</a></td>-->
-                    <td><md-button type="submit" class="textAR" ng-click="vm.DeleteInput(data.ClientId)">Delete</md-button></td>
+                    <td><md-checkbox ng-model="data.iAccept" ng-disabled="true"></md-checkbox></td>
+                    <td><md-checkbox ng-model="data.enable" ng-disabled="true"></md-checkbox></td>
+                    <td><md-button class="textAR md-raised md-primary" ng-click="vm.ViewInput(data.ClientId)"> View </md-button></td>
+                    <td><md-button class="textAR md-raised" ng-click="vm.UpdateInput(data.ClientId)"> Update</md-button></td>
+                    <td><md-button type="submit" class="textAR md-raised md-warn" ng-click="vm.DeleteInput(data.ClientId)">Delete</md-button></td>
                 </tr>
             </table>
 
         </div>
     </div>
-    <md-button type="submit" class="textAR"> <a href="~/Student/"> Back </a></md-button>
+    <md-button type="submit" class="textAR md-raised md-primary"> <a href="~/Student/"> Back </a></md-button>
 </div>
 
 @Scripts.Render("~/bundles/Common")

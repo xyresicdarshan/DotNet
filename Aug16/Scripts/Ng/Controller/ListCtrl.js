@@ -33,26 +33,38 @@ var FirstProjectExtension;
                 });
             };
             _this.ViewInput = function (id) {
-                //this.ShowInput(id);
+                _this.ShowInput(id);
                 console.log(id);
                 _this.dataSvc.GetInput(id).then(function (data) {
                     console.log(data);
+                    _this.$scope.project = data;
                 }).catch(function (error) {
                     console.log(error);
                 }).finally(function () {
                 });
             };
             _this.DeleteInput = function (id) {
-                _this.dataSvc.DeleteInput(id).then(function (data) {
-                    console.log(data);
-                }).catch(function (error) {
-                    console.log(error);
-                }).finally(function () {
+                var confirm = _this.$mdDialog.confirm()
+                    .title('Would you like to delete')
+                    .textContent('')
+                    .ariaLabel('')
+                    .targetEvent(null)
+                    .ok('Yes')
+                    .cancel('Cancel');
+                _this.$mdDialog.show(confirm).then(function () {
+                    _this.dataSvc.DeleteInput(id).then(function (data) {
+                        _this.showWarning("Deleted Sucessfully");
+                        console.log(data);
+                        _this.GetCRUDList();
+                    }).catch(function (error) {
+                        console.log(error);
+                    }).finally(function () {
+                    });
+                }, function () {
                 });
             };
             _this.UpdateInput = function (id) {
                 _this.ShowInput(id);
-                console.log(id);
                 _this.dataSvc.UpdateInput(id).then(function (data) {
                     console.log(data);
                 }).catch(function (error) {
@@ -64,8 +76,8 @@ var FirstProjectExtension;
                 window.location.href = "/Student/ViewInput/" + id;
             };
             _this.$scope = $scope;
-            _this.ClientId = $("#hdnid").val();
-            _this.ViewInput(_this.ClientId);
+            _this.$mdDialog = $mdDialog;
+            _this.GetCRUDList();
             return _this;
         }
         ListCtrl.prototype.$onInit = function () {

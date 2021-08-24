@@ -9,10 +9,10 @@
 
 
 <div ng-app="studentApp">
-    <h2 class="textAR">Material Form CRUD </h2>
-    <div ng-controller="ViewCtrl as vm">
+    <h2 class="txthead"> </h2>
+    <div ng-controller="ViewCtrl as mv">
 
-        <input id="hdnid" value=" " />
+        <input id="hdnid" type="hidden" value="@ViewBag.Id" />
 
         <md-content layout-padding>
             <form name="projectForm">
@@ -107,16 +107,15 @@
                     </div>
                 </md-input-container>
                 <div>
-                    <md-button type="submit" class="textAR" ng-click="vm.UpdateInput(data.ClientId)">UPDATE</md-button>
+                    <md-button type="submit" class="textAR md-raised md-primary" ng-click="mv.UpdateInput(data.id)">UPDATE</md-button>
+                    <md-button type="submit" class="textAR md-raised md-primary"> <a href="~/Student"> Add Client </a></md-button>
+                    <md-button type="submit" class="textAR md-raised md-primary"> <a href="~/Student/List"> Show List </a></md-button>
                 </div>
-
-                <p style="font-size:.8em; width: 100%; text-align: center;">
-                    Make sure to include <a href="https://docs.angularjs.org/api/ngMessages" target="_blank">ngMessages</a> module when using ng-message markup.
-                </p>
             </form>
+            
         </md-content>
     </div>
-    <md-button type="submit" class="textAR"> <a href="~/Student/List"> Back </a></md-button>
+    
 </div>
 @Scripts.Render("~/bundles/Common")
 @Scripts.Render("~/bundles/Angular")

@@ -34,7 +34,8 @@ namespace Aug16.Service
                 Email = model.Email,
                 iAccept = model.iAccept,
                 ProjectType = model.ProjectType,
-                HourlyRate = model.HourlyRate
+                HourlyRate = model.HourlyRate,
+                enable = model.enable
             };
             db.Students.Add(input);
             return db.SaveChanges();
@@ -43,21 +44,24 @@ namespace Aug16.Service
 
         public List<FormViewModel> GetCRUDSList()
         {
-            var inputs = db.Students.ToList();
+            // var inputs = db.Students.ToList();
+            var inputs = db.Students.OrderByDescending(s => s.ClientId).ToList();
             List<FormViewModel> fv = new List<FormViewModel>();
             foreach (var input in inputs)
             {
                 FormViewModel formView = new FormViewModel()
                 {
-                ClientId = input.ClientId,
-                ClientName = input.ClientName, 
-                Descripion = input.Descripion,
-                Email =  input.Email,
-                iAccept = input.iAccept.Value,
-                ProjectType = input.ProjectType, 
-                HourlyRate = (int)input.HourlyRate
-            };
+                    ClientId = input.ClientId,
+                    ClientName = input.ClientName,
+                    Descripion = input.Descripion,
+                    Email = input.Email,
+                    iAccept = input.iAccept.Value,
+                    ProjectType = input.ProjectType,
+                    enable = input.enable,
+                    HourlyRate = (int)input.HourlyRate
+                };
                 fv.Add(formView);
+
             }
             return fv;
         }
@@ -93,7 +97,8 @@ namespace Aug16.Service
                     Email = input.Email,
                     iAccept = input.iAccept.Value,
                     ProjectType = input.ProjectType,
-                    HourlyRate = (int)input.HourlyRate
+                    HourlyRate = (int)input.HourlyRate,
+                    enable = (bool)input.enable
                 };
                 return formView;
             }
@@ -104,19 +109,19 @@ namespace Aug16.Service
         }
 
 
-        public int UpdateInput(int id)
+        public int UpdateInput(FormViewModel model)
         {
-            var input = db.Students.Where(s => s.ClientId == id).FirstOrDefault();
+            var input = db.Students.Where(s => s.ClientId == model.ClientId).FirstOrDefault();
             if (input != null)
             {
-                input.ClientId = input.ClientId;
-                input.ClientName = input.ClientName;
-                input.Descripion = input.Descripion;
-                input.Email = input.Email;
-                input.iAccept = input.iAccept;
-                input.ProjectType = input.ProjectType;
-                input.HourlyRate = input.HourlyRate;
-                input.enable = input.enable;
+                input.ClientId = model.ClientId;
+                input.ClientName = model.ClientName;
+                input.Descripion = model.Descripion;
+                input.Email = model.Email;
+                input.iAccept = model.iAccept;
+                input.ProjectType = model.ProjectType;
+                input.HourlyRate = model.HourlyRate;
+                input.enable = model.enable;
 
                 db.Entry<Student>(input).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();

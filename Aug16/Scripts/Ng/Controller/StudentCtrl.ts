@@ -19,7 +19,7 @@ module FirstProjectExtension {
         project: IStudentModel;
 
     }
-    export class PathwayCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
+    export class StudentCtrl extends wp.angularBase.BaseCtrl implements angular.IController {
 
 
         ClientId: number;
@@ -53,6 +53,8 @@ module FirstProjectExtension {
         AddInput = () => {
             this.dataSvc.postSkill(this.$scope.project).then((data) => {
                 console.log(data);
+                this.showMessage("Added Sucessfully")
+                this.$scope.project = null;
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
@@ -61,9 +63,9 @@ module FirstProjectExtension {
 
         }
     }
-    PathwayCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
+    StudentCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 
     var app = angular.module("studentApp", ['ngMaterial', 'ngMessages', 'ngSanitize']);
     app.factory('StudentDataService', ['$http', '$q', StudentDataService.StudentDataServiceFactory]);
-    app.controller('PathwayCtrl', PathwayCtrl);
+    app.controller('StudentCtrl', StudentCtrl);
 }

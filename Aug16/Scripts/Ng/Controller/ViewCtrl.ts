@@ -50,10 +50,11 @@ module FirstProjectExtension {
         private init(): void {
         }
 
-        ViewInput = (id) => {
+        ViewInput = (id: number) => {
             console.log(id);
             this.dataSvc.GetInput(id).then((data) => {
                 console.log(data);
+                this.$scope.project = data;
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
@@ -61,10 +62,9 @@ module FirstProjectExtension {
             })
         }
 
-        UpdateInput = (id: number) => {
-            console.log(id);
-            this.ShowInput(id);
-            this.dataSvc.UpdateInput(id).then((data) => {
+        UpdateInput = () => {
+            this.dataSvc.UpdateInput(this.$scope.project).then((data) => {
+                this.showMessage("Updated Sucesfully");
                 console.log(data);
             }).catch((error) => {
                 console.log(error);
@@ -73,9 +73,6 @@ module FirstProjectExtension {
             })
         }
 
-        ShowInput = (id: number) => {
-            window.location.href = "/Student/ViewInput/" + id;
-        }
     }
     ViewCtrl.$inject = ['$scope', 'StudentDataService', '$timeout', '$mdDialog', '$mdSelect', '$mdToast'];
 

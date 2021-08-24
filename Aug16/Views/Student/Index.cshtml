@@ -7,8 +7,8 @@
 }
 
 <div ng-app="studentApp">
-    <h2 class="textAR">Material Form CRUD </h2>
-    <div ng-controller="PathwayCtrl">
+    <h2 class="txthead">Add Client</h2>
+    <div ng-controller="StudentCtrl as vm">
         <md-content layout-padding>
             <form name="projectForm">
                 <md-input-container class="md-block textAR">
@@ -102,13 +102,9 @@
                     </div>
                 </md-input-container>
                 <div>
-                    <md-button type="submit" class="textAR" ng-click="PathwayCtrl.AddInput()">ADD</md-button>
-                    <md-button type="button" class="textAR"> <a href="~/Student/List">Show All DATA </a></md-button>
+                    <md-button type="submit" class="textAR md-raised md-primary" ng-click="vm.AddInput()">SAVE</md-button>
+                    <md-button type="button" class="textAR md-raised md-primary" > <a href="~/Student/List">Show All DATA </a></md-button>
                 </div>
-
-                <p style="font-size:.8em; width: 100%; text-align: center;">
-                    Make sure to include <a href="https://docs.angularjs.org/api/ngMessages" target="_blank">ngMessages</a> module when using ng-message markup.
-                </p>
             </form>
         </md-content>
     </div>
@@ -117,6 +113,7 @@
 @Scripts.Render("~/bundles/Common")
 @Scripts.Render("~/bundles/Angular")
 @Scripts.Render("~/bundles/Student")
+
 
 
 
